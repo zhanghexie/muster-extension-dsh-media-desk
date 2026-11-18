@@ -1,0 +1,84 @@
+{
+  "id": "dsh-media-desk",
+  "name": "媒体创作台",
+  "version": "0.1.1",
+  "description": "原版 dsh-media-desk 界面：灵感画布、内容、排期、复盘、风格与成稿工作区。",
+  "icon": "builtin-extension:library",
+  "scope": "global",
+  "surface": {
+    "kind": "sidebar",
+    "entry": "ui/panel.html",
+    "title": "媒体创作台"
+  },
+  "domain": {
+    "entry": "domain.mjs",
+    "queries": [
+      "desk.read"
+    ],
+    "commands": [
+      "desk.write"
+    ],
+    "events": [
+      "desk.changed"
+    ],
+    "queryDefs": [
+      {
+        "id": "desk.read",
+        "title": "读取媒体工作台",
+        "permission": "read",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "path"
+          ],
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    ],
+    "commandDefs": [
+      {
+        "id": "desk.write",
+        "title": "编辑媒体工作台",
+        "permission": "edit",
+        "parameters": {
+          "type": "object",
+          "required": [
+            "path"
+          ],
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "body": {
+              "type": "object"
+            },
+            "language": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    ]
+  },
+  "data": {
+    "workspace": true,
+    "shared": false
+  },
+  "permissions": [
+    "data",
+    "files",
+    "media",
+    "exports",
+    "models",
+    "theme"
+  ]
+}
